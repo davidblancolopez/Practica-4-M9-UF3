@@ -37,18 +37,19 @@ public class TimeClient {
         String dia = JOptionPane.showInputDialog(null, "Diu el numero del dia: ", "Entrando", 3);
         String mes = JOptionPane.showInputDialog(null, "Diu el mes: ", "Entrando", 3);
         String any = JOptionPane.showInputDialog(null, "Diu l'any: ", "Entrando", 3);
-        //Pasem com int les dades i les enviem a el metode enviarAServer
-        enviarAServer(Integer.parseInt(dia), Integer.parseInt(mes), Integer.parseInt(any));
+        //Pasem com int les dades i les enviem a el metode enviarServidor
+        enviarServidor(Integer.parseInt(dia), Integer.parseInt(mes), Integer.parseInt(any));
 
     }
     /**
-     * Metode que li arriba dia, mes i any com int, el construeix com String i ho envia al Servidor
+     * Metode que li arriba per parametre dia, mes i any.
+     * Agafa la informació que li ha arribat i l'envia al servidor. 
      * @param dia
      * @param mes
      * @param any
      * @throws IOException 
      */
-    public void enviarAServer(int dia, int mes, int any) throws IOException {
+    public void enviarServidor(int dia, int mes, int any) throws IOException {
         //Enviem el dia, mes i any, separat per espais en forma de string
         outToServer.writeBytes(dia + " " + mes + " " + any);
         //Tanquem els recursos
