@@ -11,9 +11,12 @@ import java.util.Scanner;
 
 public class TimeServer {
     
-    private static final String[] nomDies = {"Diumenge", "Dilluns",
+    private static final String[] setmana = {
+        "Diumenge", 
+        "Dilluns",
         "Dimarts",
-        "Dimecres", "Dijous",
+        "Dimecres", 
+        "Dijous",
         "Divendres",
         "Dissabte"};
 
@@ -39,15 +42,15 @@ public class TimeServer {
                     GregorianCalendar cal = new GregorianCalendar(data[2],
                             data[1], data[0]);
                     int dia = cal.get(Calendar.DAY_OF_WEEK) - 1;
-                    System.out.println("Aquest dia era " + nomDies[dia] + ".");
+                    System.out.println("Aquest dia era " + setmana[dia] + ".");
 
                 } else {
-                    System.out.println("Format de les dades incorrecte.");
+                    System.out.println("Format incorrecte.");
                 }
                 cliSocket.close();
             }
         } catch (Exception ex) {
-            System.out.println("Error en les comuncacions: " + ex);
+            System.out.println("Error en la comuncacions: " + ex);
         }
     }
 
