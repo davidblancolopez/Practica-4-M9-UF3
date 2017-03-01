@@ -11,32 +11,29 @@ import javax.swing.JOptionPane;
 
 public class TimeClient {
     
-    //Declarem el HOST
+    //Declarem el HOST i el PORT, DataoutputStream, el buffer i el socket.
     static String HOST = "localhost";
-    //Declarem el puerto
     static int PORT = 8745;
-    //Declarem el DataOutput
     DataOutputStream outToServer;
-    //Declarem el BufferedReader
-    BufferedReader bf;
-    //Declarem el Socket
+    BufferedReader buffer;
     Socket sServer;
+    
+    
     /**
-     * Constructor de la clase Client.
-     * Li arriba per parametre un host i el port, un cop feta la conexio, demanem dia, mes i any i enviem aquestes dades a el metode
-     * que enviará tot al Server.
+     * Constructor de TimeClient
+     * Arriba per parametre un host i el port, realitza la conexio,  es demana dia, mes i any i s'envien al server.
      * @param host
      * @param port
      * @throws IOException 
      */
     public TimeClient(String host, int port) throws IOException {
-        //Inicialitzem el Socket
+        //Inicialitzem el Socket , outToServer i BufferReader
         sServer = new Socket(host, port);
-        //Inicialitzem el outToServer
         outToServer = new DataOutputStream(sServer.getOutputStream());
-        //Inicialitzem BufferedReader
-        bf = new BufferedReader(new InputStreamReader(sServer.getInputStream()));
-        //Demanem dia, mes, any
+        buffer = new BufferedReader(new InputStreamReader(sServer.getInputStream()));
+        
+        
+        //Es demanem dia, mes, any
         String dia = JOptionPane.showInputDialog(null, "Diu el numero del dia: ", "Entrando", 3);
         String mes = JOptionPane.showInputDialog(null, "Diu el mes: ", "Entrando", 3);
         String any = JOptionPane.showInputDialog(null, "Diu l'any: ", "Entrando", 3);
@@ -55,7 +52,7 @@ public class TimeClient {
         //Enviem el dia, mes i any, separat per espais en forma de string
         outToServer.writeBytes(dia + " " + mes + " " + any);
         //Tanquem els recursos
-        bf.close();
+        buffer.close();
         outToServer.close();
         sServer.close();
     }
