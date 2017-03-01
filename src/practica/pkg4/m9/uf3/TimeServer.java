@@ -45,12 +45,12 @@ public class TimeServer {
                     System.out.println("Aquest dia era " + setmana[dia] + ".");
 
                 } else {
-                    System.out.println("Format incorrecte.");
+                    System.out.println("Format de les dades incorrecte.");
                 }
                 cliSocket.close();
             }
         } catch (Exception ex) {
-            System.out.println("Error en la comuncacions: " + ex);
+            System.out.println("Error en les comuncacions: " + ex);
         }
     }
 
