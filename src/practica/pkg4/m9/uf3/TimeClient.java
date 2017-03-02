@@ -52,7 +52,7 @@ public class TimeClient {
     public void enviarServidor(int dia, int mes, int any) throws IOException {
         //Enviem el dia, mes i any, separat per espais en forma de string
         outToServer.writeBytes(dia + " " + mes + " " + any);
-        //Tanquem els recursos
+        //Es tanquen els recursos
         buffer.close();
         outToServer.close();
         sServer.close();
